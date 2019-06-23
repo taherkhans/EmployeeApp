@@ -5,6 +5,8 @@ import { HomeComponent } from './home/home.component';
 import { Routes } from '@angular/router';
 import { AuthGuard } from './_guards/auth.guard';
 import { EmployeeListResolver } from './_resolvers/employee-list.resolver';
+import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
+import { EmployeeEditResolver } from './_resolvers/employee-edit.resolver';
 
 export const appRoutes: Routes = [
     { path : '' , component: HomeComponent},
@@ -12,7 +14,9 @@ export const appRoutes: Routes = [
         children: [
             { path : 'employees' , component: EmployeeListComponent, resolve : {users : EmployeeListResolver}},
             { path : 'employees/:id' , component: EmployeeDetailsComponent,
-            resolve : {user : EmployeeDetailResolver}}
+            resolve : {user : EmployeeDetailResolver}},
+            { path : 'employee/edit' , component: EmployeeEditComponent,
+            resolve : {user : EmployeeEditResolver}}
 
         ]},
     { path : '**' , redirectTo: '', pathMatch: 'full'}

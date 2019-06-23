@@ -25,6 +25,8 @@ import { UserService } from './_services/user.service';
 import { EmployeeCardComponent } from './employees/employee-card/employee-card.component';
 import { EmployeeDetailResolver } from './_resolvers/employee-detail.resolver';
 import { EmployeeListResolver } from './_resolvers/employee-list.resolver';
+import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
+import { EmployeeEditResolver } from './_resolvers/employee-edit.resolver';
 
 
 
@@ -40,7 +42,8 @@ export function tokenGetter() {
       RegisterComponent,
       EmployeeListComponent,
       EmployeeCardComponent,
-      EmployeeDetailsComponent
+      EmployeeDetailsComponent,
+      EmployeeEditComponent
    ],
    imports: [
       BrowserModule,
@@ -65,7 +68,8 @@ export function tokenGetter() {
       AuthGuard,
       UserService,
       EmployeeDetailResolver,
-      EmployeeListResolver
+      EmployeeListResolver,
+      EmployeeEditResolver
    ],
    bootstrap: [
       AppComponent
