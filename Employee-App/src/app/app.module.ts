@@ -1,3 +1,4 @@
+import { EmployeeDetailsComponent } from './employees/employee-details/employee-details.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { AlertifyService } from './_services/alertify.service';
 import { BrowserModule } from '@angular/platform-browser';
@@ -5,6 +6,10 @@ import { NgModule } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { JwtModule } from '@auth0/angular-jwt';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
+import { NgxGalleryModule } from 'ngx-gallery';
+
 
 
 import { AppComponent } from './app.component';
@@ -14,10 +19,18 @@ import { AuthService } from './_services/auth.service';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { ErrorInterceptorProvider } from './_services/error.interceptor';
-import { BsDropdownModule } from 'ngx-bootstrap';
-import { EmployeeListComponent } from './employee-list/employee-list.component';
+import { EmployeeListComponent } from './employees/employee-list/employee-list.component';
 import { appRoutes } from './routes';
+import { UserService } from './_services/user.service';
+import { EmployeeCardComponent } from './employees/employee-card/employee-card.component';
+import { EmployeeDetailResolver } from './_resolvers/employee-detail.resolver';
+import { EmployeeListResolver } from './_resolvers/employee-list.resolver';
 
+
+
+export function tokenGetter() {
+   return localStorage.getItem('token');
+}
 @NgModule({
    declarations: [
       AppComponent,
@@ -25,12 +38,23 @@ import { appRoutes } from './routes';
       NavComponent,
       HomeComponent,
       RegisterComponent,
-      EmployeeListComponent
+      EmployeeListComponent,
+      EmployeeCardComponent,
+      EmployeeDetailsComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
+      NgxGalleryModule,
+      TabsModule.forRoot(),
+      JwtModule.forRoot({
+         config: {
+            tokenGetter: tokenGetter,
+            whitelistedDomains: ['localhost:5000'],
+            blacklistedRoutes: ['localhost:5000/api/auth']
+         }
+      }),
       BsDropdownModule.forRoot(),
       RouterModule.forRoot(appRoutes)
    ],
@@ -38,7 +62,10 @@ import { appRoutes } from './routes';
       AuthService,
       ErrorInterceptorProvider,
       AlertifyService,
-      AuthGuard
+      AuthGuard,
+      UserService,
+      EmployeeDetailResolver,
+      EmployeeListResolver
    ],
    bootstrap: [
       AppComponent
