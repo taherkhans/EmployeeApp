@@ -9,7 +9,7 @@ namespace EmployeeApp.API.Helpers
     {
         public AutoMapperProfiles()
         {
-            CreateMap<User, UserForListDto>()
+             CreateMap<User, UserForListDto>()
                 .ForMember(dest => dest.PhotoUrl, opt => {
                     opt.MapFrom(src => src.Photos.FirstOrDefault(p => p.IsMain).Url);
                 })
@@ -24,6 +24,7 @@ namespace EmployeeApp.API.Helpers
                     opt.ResolveUsing(d => d.DateOfBirth.CalculateAge());
                 });
             CreateMap<Photo, PhotosForDetailedDto>();
+            CreateMap<UserForUpdateDto, User>();
         }
     }
 }

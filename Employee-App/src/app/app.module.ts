@@ -27,6 +27,7 @@ import { EmployeeDetailResolver } from './_resolvers/employee-detail.resolver';
 import { EmployeeListResolver } from './_resolvers/employee-list.resolver';
 import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
 import { EmployeeEditResolver } from './_resolvers/employee-edit.resolver';
+import { PreventUnsavedChanges } from './_guards/prevent-unsafe-changes.guard';
 
 
 
@@ -69,7 +70,8 @@ export function tokenGetter() {
       UserService,
       EmployeeDetailResolver,
       EmployeeListResolver,
-      EmployeeEditResolver
+      EmployeeEditResolver,
+      PreventUnsavedChanges
    ],
    bootstrap: [
       AppComponent

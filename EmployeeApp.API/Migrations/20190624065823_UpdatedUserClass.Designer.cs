@@ -3,14 +3,16 @@ using System;
 using EmployeeApp.API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace EmployeeApp.API.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190624065823_UpdatedUserClass")]
+    partial class UpdatedUserClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,8 +28,6 @@ namespace EmployeeApp.API.Migrations
                     b.Property<string>("Description");
 
                     b.Property<bool>("IsMain");
-
-                    b.Property<string>("PublicID");
 
                     b.Property<string>("Url");
 
@@ -55,17 +55,9 @@ namespace EmployeeApp.API.Migrations
 
                     b.Property<string>("Gender");
 
-                    b.Property<string>("Interests");
-
-                    b.Property<string>("Introduction");
-
                     b.Property<DateTime>("JoinedDate");
 
-                    b.Property<string>("KnownAs");
-
                     b.Property<DateTime>("LastActive");
-
-                    b.Property<string>("LookingFor");
 
                     b.Property<byte[]>("PasswordHash");
 

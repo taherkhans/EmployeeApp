@@ -16,9 +16,9 @@ namespace EmployeeApp.API.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.1.11-servicing-32099");
+                .HasAnnotation("ProductVersion", "2.1.1-rtm-30846");
 
-            modelBuilder.Entity("EmployeeApp.API.Models.Photo", b =>
+            modelBuilder.Entity("DatingApp.API.Models.Photo", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -40,7 +40,7 @@ namespace EmployeeApp.API.Migrations
                     b.ToTable("Photos");
                 });
 
-            modelBuilder.Entity("EmployeeApp.API.Models.User", b =>
+            modelBuilder.Entity("DatingApp.API.Models.User", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -55,9 +55,15 @@ namespace EmployeeApp.API.Migrations
 
                     b.Property<string>("Gender");
 
-                    b.Property<DateTime>("JoinedDate");
+                    b.Property<string>("Interests");
+
+                    b.Property<string>("Introduction");
+
+                    b.Property<string>("KnownAs");
 
                     b.Property<DateTime>("LastActive");
+
+                    b.Property<string>("LookingFor");
 
                     b.Property<byte[]>("PasswordHash");
 
@@ -70,7 +76,7 @@ namespace EmployeeApp.API.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("EmployeeApp.API.Models.Value", b =>
+            modelBuilder.Entity("DatingApp.API.Models.Value", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -82,9 +88,9 @@ namespace EmployeeApp.API.Migrations
                     b.ToTable("Values");
                 });
 
-            modelBuilder.Entity("EmployeeApp.API.Models.Photo", b =>
+            modelBuilder.Entity("DatingApp.API.Models.Photo", b =>
                 {
-                    b.HasOne("EmployeeApp.API.Models.User", "User")
+                    b.HasOne("DatingApp.API.Models.User", "User")
                         .WithMany("Photos")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);

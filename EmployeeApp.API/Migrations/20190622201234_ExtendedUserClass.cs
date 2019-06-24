@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EmployeeApp.API.Migrations
 {
-    public partial class ExtendedUserClass : Migration
+   public partial class ExtendedUserClass : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -34,17 +34,31 @@ namespace EmployeeApp.API.Migrations
                 table: "Users",
                 nullable: true);
 
-            migrationBuilder.AddColumn<DateTime>(
-                name: "JoinedDate",
+            migrationBuilder.AddColumn<string>(
+                name: "Interests",
                 table: "Users",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "Introduction",
+                table: "Users",
+                nullable: true);
+
+            migrationBuilder.AddColumn<string>(
+                name: "KnownAs",
+                table: "Users",
+                nullable: true);
 
             migrationBuilder.AddColumn<DateTime>(
                 name: "LastActive",
                 table: "Users",
                 nullable: false,
                 defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified));
+
+            migrationBuilder.AddColumn<string>(
+                name: "LookingFor",
+                table: "Users",
+                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "Photos",
@@ -101,11 +115,23 @@ namespace EmployeeApp.API.Migrations
                 table: "Users");
 
             migrationBuilder.DropColumn(
-                name: "JoinedDate",
+                name: "Interests",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "Introduction",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "KnownAs",
                 table: "Users");
 
             migrationBuilder.DropColumn(
                 name: "LastActive",
+                table: "Users");
+
+            migrationBuilder.DropColumn(
+                name: "LookingFor",
                 table: "Users");
         }
     }
