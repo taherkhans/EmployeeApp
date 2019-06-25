@@ -28,6 +28,8 @@ import { EmployeeListResolver } from './_resolvers/employee-list.resolver';
 import { EmployeeEditComponent } from './employees/employee-edit/employee-edit.component';
 import { EmployeeEditResolver } from './_resolvers/employee-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsafe-changes.guard';
+import { PhotoEditorComponent } from './employees/photo-editor/photo-editor.component';
+import { FileUploadModule } from 'ng2-file-upload';
 
 
 
@@ -44,13 +46,15 @@ export function tokenGetter() {
       EmployeeListComponent,
       EmployeeCardComponent,
       EmployeeDetailsComponent,
-      EmployeeEditComponent
+      EmployeeEditComponent,
+      PhotoEditorComponent
    ],
    imports: [
       BrowserModule,
       HttpClientModule,
       FormsModule,
       NgxGalleryModule,
+      FileUploadModule,
       TabsModule.forRoot(),
       JwtModule.forRoot({
          config: {
