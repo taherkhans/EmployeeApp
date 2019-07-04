@@ -30,6 +30,7 @@ import { EmployeeEditResolver } from './_resolvers/employee-edit.resolver';
 import { PreventUnsavedChanges } from './_guards/prevent-unsafe-changes.guard';
 import { PhotoEditorComponent } from './employees/photo-editor/photo-editor.component';
 import { FileUploadModule } from 'ng2-file-upload';
+import { TimeAgoPipe } from 'time-ago-pipe';
 
 
 
@@ -47,7 +48,8 @@ export function tokenGetter() {
       EmployeeCardComponent,
       EmployeeDetailsComponent,
       EmployeeEditComponent,
-      PhotoEditorComponent
+      PhotoEditorComponent,
+      TimeAgoPipe
    ],
    imports: [
       BrowserModule,
